@@ -1,9 +1,9 @@
 import discord
 import asyncio
-
+import datetime
 import requests, json
 from discord.ext import commands
-
+import time
 from deep_translator import GoogleTranslator
 
 bot = commands.Bot(command_prefix='#', intents=discord.Intents.all())
@@ -65,7 +65,9 @@ async def 날씨(message):
         print(city)
         print(translated)
         await message.channel.send(embed=get_weather(translated))
-
-
+@bot.command()
+async def 몇시야(message):
+        time = "현재 시간: " + datetime.datetime.now().strftime("%H"+"시"+"%M"+"분")
+        await message.channel.send(time)
 
 bot.run('token')
