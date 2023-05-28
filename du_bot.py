@@ -65,4 +65,4 @@ async def weather(message):
 
 
 
-bot.run('MTExMTkxNjE5MTM1OTk1OTA3MQ.Gv2I5J.2ICo8oWX78aaJu0VKFeztP55ChskLxr6bvCtH4')
+bot.run('Token')
