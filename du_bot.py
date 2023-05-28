@@ -1,8 +1,10 @@
 import discord
 import asyncio
-from datetime import datetime, timezone
+
 import requests, json
 from discord.ext import commands
+
+from deep_translator import GoogleTranslator
 
 bot = commands.Bot(command_prefix='#', intents=discord.Intents.all())
 client = discord.Client(intents=discord.Intents.all())
@@ -56,13 +58,14 @@ def get_weather(city):
         return embed
 
 @bot.command()
-async def weather(message):
-        city = message.message.content[9:]
+async def 날씨(message):
+        city = message.message.content[4:]
+        to_translate = city
+        translated = GoogleTranslator(source='auto', target='english').translate(to_translate)
         print(city)
-
-        await message.channel.send(embed=get_weather(city))
-
-
+        print(translated)
+        await message.channel.send(embed=get_weather(translated))
 
 
-bot.run('Token')
+
+bot.run('token')
