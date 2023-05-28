@@ -69,5 +69,10 @@ async def 날씨(message):
 async def 몇시야(message):
         time = "현재 시간: " + datetime.datetime.now().strftime("%H"+"시"+"%M"+"분")
         await message.channel.send(time)
+@bot.command()
+async def 무슨요일이야(message):
+        to_translate = datetime.date.today().strftime("%A")
+        translated = "오늘의 요일: " + GoogleTranslator(source='auto', target='korean').translate(to_translate)
+        await message.channel.send(translated)
 
 bot.run('token')
