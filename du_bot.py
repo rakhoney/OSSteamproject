@@ -74,5 +74,8 @@ async def 무슨요일이야(message):
         to_translate = datetime.date.today().strftime("%A")
         translated = "오늘의 요일: " + GoogleTranslator(source='auto', target='korean').translate(to_translate)
         await message.channel.send(translated)
-
+@bot.command()
+async def 날짜(message):
+        date = "금일 : " + datetime.datetime.now().strftime("%Y"+"년"+"%m"+"월"+"%d"+"일")
+        await message.channel.send(date)
 bot.run('token')
